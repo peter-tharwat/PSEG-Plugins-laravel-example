@@ -41,13 +41,20 @@ PaySky_Enviroment= sandbox-production
 
 In Controller init new payment class add amount - oderId - merchRef - payment method type
 ```bash
-$payment = PaySky::makePayment(100 , 32322332 , 323223 , 2);
-    return view('welcome' ,  ['payment' => $payment ]  );
-```
-add payment view in your checkout page
+$payment = PaySky::makePayment(100000 , rand() , 2);
 
+```
+add payment button in your checkout page
 ```bash
 @include('paysky::index')
+```
+
+
+pass payment variable to view have button link
+
+```bash
+return view('welcome' ,  ['payment' => $payment ]  );
+
 ```
 
 # all amount by small curruncy ()
