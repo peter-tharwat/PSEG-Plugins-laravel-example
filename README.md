@@ -39,7 +39,7 @@ PaySky_Enviroment= sandbox-production
 ```
 
 
-In Controller init new payment class add amount - oderId - merchRef - payment method type
+In Controller init new payment class add amount - oderId - merchRef
 ```bash
 $payment = PaySky::makePayment(100000 , rand() , 2);
 
