@@ -1,4 +1,5 @@
-<button type="button" class="btn btn-info" id="paysky_payment_id" onclick="showLightBox()">Pay</button>
+<button type="button" class="btn btn-info" id="paysky_payment_id" onclick="showLightBox()">{{__('paysky.paybtn')}}</button>
+
 @isset($payment)
 
     @if (env('PaySky_Enviroment') == 'production')
