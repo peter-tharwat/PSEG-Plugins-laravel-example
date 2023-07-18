@@ -48,8 +48,10 @@ add payment button in your checkout page
 ```bash
 @include('paysky::index')
 ```
-
-
+tanslation key for btn
+```bash
+paysky.paybtn
+```
 pass payment variable to view have button link
 
 ```bash
