@@ -41,7 +41,7 @@ PaySky_Enviroment= sandbox-production
 
 In Controller init new payment class add amount - oderId - merchRef
 ```bash
-$payment = PaySky::makePayment(100000 , rand() , 2);
+$payment = PaySky::makePayment(100000 , rand() );
 
 ```
 add payment button in your checkout page
