@@ -19,8 +19,6 @@
                 TrxDateTime: "{{ $payment['TrxDateTime'] }}",
                 SecureHash: "{{ $payment['SecureHash'] }}",
                 completeCallback: function(data) {
-                    console.log('completed');
-                    console.log(data);
                     var url = "{{ route('paysky.payment.completeCallback') }}";
                     url += "?refNumber={{ $payment['MerchantReference'] }}";
                     url += "&TxnNumber=" + data.SystemReference;
@@ -28,8 +26,6 @@
 
                 },
                 errorCallback: function(data) {
-                    console.log('error');
-                    console.log(data);
                     var url = "{{ route('paysky.payment.errorCallback') }}";
                     url += "?refNumber={{ $payment['MerchantReference'] }}";
                     window.location.href = url;
