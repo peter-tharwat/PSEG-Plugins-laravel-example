@@ -1,10 +1,10 @@
 <?php
 
-namespace PaySky\Payment\Facades;
+namespace Moamalat\Payment\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
-class PaySky extends Facade
+class Moamalat extends Facade
 {
     /**
      * Get the registered name of the component.
@@ -13,6 +13,6 @@ class PaySky extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'paysky';
+        return 'moamalat';
     }
 }

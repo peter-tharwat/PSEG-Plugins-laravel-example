@@ -1,15 +1,15 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use PaySky\Payment\PaySky;
+use Moamalat\Payment\Moamalat;
 
-class PaySkyTest extends TestCase
+class MoamalatTest extends TestCase
 {
-    protected $paySky;
+    protected $moamalat;
 
     protected function setUp(): void
     {
-        $this->paySky = new PaySky();
+        $this->moamalat = new Moamalat();
     }
 
     public function testMakePayment()
@@ -17,16 +17,16 @@ class PaySkyTest extends TestCase
         $amount = 100; // Set the amount for the test
         $merchRef = 'ABC123'; // Set the merchant reference for the test
 
-        $payment = $this->paySky->makePayment($amount, $merchRef);
+        $payment = $this->moamalat->makePayment($amount, $merchRef);
 
         // Assert that the payment method is 2
         $this->assertEquals(2, $payment['paymentMethodFromLightBox']);
 
         // Assert that the MID is retrieved from the environment variable
-        $this->assertEquals(env("PaySky_MerchantId"), $payment['MID']);
+        $this->assertEquals(env("Moamalat_MerchantId"), $payment['MID']);
 
         // Assert that the TID is retrieved from the environment variable
-        $this->assertEquals(env("PaySky_TerminalId"), $payment['TID']);
+        $this->assertEquals(env("Moamalat_TerminalId"), $payment['TID']);
 
         // Assert that the AmountTrxn matches the provided amount
         $this->assertEquals($amount, $payment['AmountTrxn']);
@@ -38,7 +38,7 @@ class PaySkyTest extends TestCase
         $this->assertRegExp('/\w{3}, \d{2} \w{3} \d{4} \d{2}:\d{2}:\d{2} \w{3}/', $payment['TrxDateTime']);
 
         // Assert that the SecureHash is generated correctly
-        $expectedHash = $this->paySky->generateSecureHash($payment['TrxDateTime'], $amount, $merchRef);
+        $expectedHash = $this->moamalat->generateSecureHash($payment['TrxDateTime'], $amount, $merchRef);
         $this->assertEquals($expectedHash, $payment['SecureHash']);
     }
 
@@ -52,11 +52,11 @@ class PaySkyTest extends TestCase
         $expectedHash = 'EXPECTED_HASH';
 
         // Set the environment variables used in the secure hash generation
-        putenv('PaySky_MerchantId=YOUR_MERCHANT_ID');
-        putenv('PaySky_TerminalId=YOUR_TERMINAL_ID');
-        putenv('PaySky_MerchantSecretKey=YOUR_SECRET_KEY');
+        putenv('Moamalat_MerchantId=YOUR_MERCHANT_ID');
+        putenv('Moamalat_TerminalId=YOUR_TERMINAL_ID');
+        putenv('Moamalat_MerchantSecretKey=YOUR_SECRET_KEY');
 
-        $secureHash = $this->paySky->generateSecureHash($time, $amount, $merchRef);
+        $secureHash = $this->moamalat->generateSecureHash($time, $amount, $merchRef);
 
         // Assert that the generated secure hash matches the expected hash
         $this->assertEquals($expectedHash, $secureHash);
@@ -68,7 +68,7 @@ class PaySkyTest extends TestCase
 
         $expectedString = 'Hello World'; // Set the expected converted string
 
-        $convertedString = $this->paySky->hexToStr($hex);
+        $convertedString = $this->moamalat->hexToStr($hex);
 
         // Assert that the converted string matches the expected string
         $this->assertEquals($expectedString, $convertedString);

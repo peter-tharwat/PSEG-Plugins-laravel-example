@@ -1,13 +1,13 @@
 <?php
 
-namespace PaySky\Payment\Providers;
+namespace Moamalat\Payment\Providers;
 
 
 use Illuminate\Support\ServiceProvider;
-use PaySky\Payment\PaySky;
+use Moamalat\Payment\Moamalat;
 
 
-class PaySkyPaymentServiceProvider extends ServiceProvider
+class MoamalatPaymentServiceProvider extends ServiceProvider
 {
     /**
      * Register services.
@@ -27,14 +27,14 @@ class PaySkyPaymentServiceProvider extends ServiceProvider
             __DIR__ . '/../Resources/assets' => public_path('assets'),
         ], 'paysky');
 
-        $this->loadViewsFrom(__DIR__ . '/../Paysky/views', 'paysky');
+        $this->loadViewsFrom(__DIR__ . '/../Moamalat/views', 'moamalat');
 
         $this->publishes([
-            __DIR__.'/../Config/paysky.php' => config_path('paysky.php'),
+            __DIR__.'/../Config/moamalat.php' => config_path('moamalat.php'),
         ]);
 
-        $this->app->singleton('paysky', function () {
-            return new PaySky;
+        $this->app->singleton('moamalat', function () {
+            return new Moamalat;
         });
     }
 }

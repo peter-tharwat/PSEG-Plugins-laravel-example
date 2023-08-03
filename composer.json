@@ -1,5 +1,5 @@
 {
-    "name": "paysky/payment",
+    "name": "moamalat/payment",
     "description": "payment package",
     "license": "MIT",
     "authors": [
@@ -13,7 +13,7 @@
     },
     "autoload": {
         "psr-4": {
-            "PaySky\\Payment\\":"src/"
+            "Moamalat\\Payment\\":"src/"
         }
     },
     "require-dev": {
@@ -27,7 +27,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "PaySky\\Payment\\Providers\\PaySkyPaymentServiceProvider"
+                "Moamalat\\Payment\\Providers\\MoamalatPaymentServiceProvider"
             ]
         }
     }
