@@ -5,7 +5,7 @@
 Require via composer
 
 ```bash
-$ composer require paysky/payment
+$ composer require paysky/payment:dev-main
 ```
 
 In `config/app.php` file
